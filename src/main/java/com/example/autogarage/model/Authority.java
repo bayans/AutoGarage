@@ -9,15 +9,15 @@ import javax.persistence.*;
 public class Authority implements GrantedAuthority {
 
     @Id
-    @GeneratedValue
-    private Long id;
-
     @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String authority;
 
+    @ManyToOne
+    @JoinColumn(name = "user_username")
+    private User user;
     public Authority() {}
 
     public Authority(String username, String authority) {
@@ -38,11 +38,11 @@ public class Authority implements GrantedAuthority {
         this.authority = authority;
     }
 
-    public long getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

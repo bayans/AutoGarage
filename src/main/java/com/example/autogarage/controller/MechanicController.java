@@ -10,6 +10,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -25,11 +26,13 @@ public class MechanicController {
     }
 
     @GetMapping(value = "")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<List<MechanicDto>> getAllMechanics() {
         return ResponseEntity.ok(mechanicService.getAllMechanics());
     }
 
     @PostMapping()
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> createMechanic(@Valid @RequestBody MechanicDto mechanicDto, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {

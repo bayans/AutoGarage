@@ -1,12 +1,14 @@
-INSERT INTO authorities(id,username,authority)
-VALUES (1, 'baian','ROLE_ADMIN');
-VALUES (2, 'yannick','ROLE_MECHANIC');
-VALUES (3, 'isa','ROLE_CASHIER');
+-- password is password
+INSERT INTO users(username, password, enabled, email)
+VALUES ('baian', '$2a$10$K6mQgFMi4.kUfo8wfiFLcu6d/rb3C.pIRlPrbt8x8ep5AUxeBSvli', true, 'theboss@gmail.com');
+-- password is yannick
+INSERT INTO users(username, password, enabled, email)
+VALUES ('yannick', '$2a$10$c9PEU.QWzE15R4nD84/sMe7xz9Jrqskw1VZqfPp4N2v7m2bQ1VF9O', true, 'themechanic@gmail.com');
 
 
-INSERT INTO users(username,password,enabled,email)
-VALUES ('baian','$2a$10$C0oa49sVgc2lGmcXUHRGbueX0nT7f2tb1g4wWxdjCD2nukdCOwckW',false,'theboss@gmail.com');
+INSERT INTO authorities(username, authority, user_username)
+VALUES ('baian', 'ROLE_ADMIN', 'baian');
+INSERT INTO authorities(username, authority, user_username)
+VALUES('yannick','ROLE_MECHANIC', 'yannick');
 
 
-/*INSERT INTO authorities(id,username,authority)
-VALUES (1, 'baian','ROLE_ADMIN');*/

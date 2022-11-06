@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -25,6 +26,7 @@ public class StockController {
     }
 
     @PostMapping()
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> createStock(@Valid @RequestBody StockDto stockDto, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {

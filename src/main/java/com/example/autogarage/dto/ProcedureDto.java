@@ -1,8 +1,6 @@
 package com.example.autogarage.dto;
 
-import com.example.autogarage.model.Part;
-import com.example.autogarage.model.Repair;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +13,7 @@ public class ProcedureDto {
 
     public String description;
 
+    @JsonIgnoreProperties({"stock"})
     public List<PartDto> parts;
 
 

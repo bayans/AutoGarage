@@ -9,6 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -24,17 +25,20 @@ public class CarController {
     }
 
     @GetMapping(value = "")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<List<CarDto>> getAllCars() {
         return ResponseEntity.ok(carService.getAllCars());
     }
 
     @GetMapping(value = "/{id}")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<CarDto> getOneCar(@PathVariable Long id) {
         CarDto carDto = carService.getCarById(id);
         return ResponseEntity.ok(carDto);
     }
 
     @PostMapping()
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> createCar(@Valid @RequestBody CarDto carDto, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {
@@ -53,6 +57,7 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> AssignMechanicToCar(@Valid @RequestBody CarDto carDto, @PathVariable Long id, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {
@@ -69,6 +74,7 @@ public class CarController {
     }
 
     @PutMapping(value = "/assignRepair/{id}")
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MECHANIC"})
     public ResponseEntity<Object> updateRepairForCarByCarId(@Valid @RequestBody CarDto carDto, @PathVariable Long id, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {
@@ -83,6 +89,13 @@ public class CarController {
             return ResponseEntity.noContent().build();
         }
     }
+    @PutMapping("calculateReceipt/{id}")
+    @RolesAllowed("ROLE_ADMIN")
+    public ResponseEntity<Object> calculateTotalReceiptByCarId(@PathVariable Long id) {
+
+            carService.calculateTotalReceiptByCarId(id);
+            return ResponseEntity.noContent().build();
+        }
 
 
 }

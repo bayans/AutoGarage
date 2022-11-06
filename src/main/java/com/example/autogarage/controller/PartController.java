@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -28,11 +29,13 @@ public class PartController {
     }
 
     @GetMapping(value = "")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<List<PartDto>> getAllParts() {
         return ResponseEntity.ok(partService.getAllParts());
     }
 
     @PostMapping()
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> createPart(@Valid @RequestBody PartDto carDto, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {
@@ -50,7 +53,8 @@ public class PartController {
         }
     }
 
-    @PutMapping("/{partcode}")
+    @PutMapping("/{partCode}")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity<Object> addStock(@Valid @RequestBody PartDto partDto, @PathVariable String
             partCode, BindingResult br) {
         StringBuilder sb = new StringBuilder();
@@ -65,6 +69,14 @@ public class PartController {
             partService.addStockToPart(partDto, partCode);
             return ResponseEntity.noContent().build();
         }
+
+    }
+    @DeleteMapping(value = "/{partCode}")
+    @RolesAllowed("ROLE_ADMIN")
+    public ResponseEntity<Object> deletePart(@PathVariable String partCode) {
+
+            partService.deletePartById(partCode);
+            return ResponseEntity.noContent().build();
 
     }
 

@@ -1,7 +1,5 @@
 package com.example.autogarage.dto;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +17,8 @@ public class RepairDto {
 
     public List<ProcedureDto> procedures;
 
+    @JsonIgnoreProperties("repair")
     public ReceiptDto receipt;
-
     public Boolean isApproved ;
 
     public RepairDto(Long id, MechanicDto mechanic,

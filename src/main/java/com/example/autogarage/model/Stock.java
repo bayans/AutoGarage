@@ -19,12 +19,10 @@ public class Stock {
     @GeneratedValue
     private Long id;
     private int pieces;
-    @OneToOne
-    private Part part;
 
-    public Stock(Long id, int pieces, Part part) {
+    public Stock(Long id, int pieces) {
         this.id = id;
         this.pieces = pieces;
-        this.part = part;
+
     }
 }

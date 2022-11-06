@@ -17,18 +17,17 @@ public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private double total;
+    private Double total;
 
     private Boolean isPaid;
-    @ManyToOne
-    private Cashier cashier;
+
     @OneToOne
     private Repair repair;
 
-    public Receipt(Long id, double total, Cashier cashier, Repair repair) {
+    public Receipt(Long id, Double total, Repair repair) {
         this.id = id;
         this.total = total;
-        this.cashier = cashier;
+
         this.repair = repair;
     }
 }

@@ -12,10 +12,11 @@ public class PartDto {
 
     public String partNumber;
     public double price;
+
     public StockDto stock;
 
 
-    public PartDto(String partNumber, double price, StockDto stock, ProcedureDto procedure) {
+    public PartDto(String partNumber, double price, StockDto stock) {
         this.partNumber = partNumber;
         this.price = price;
         this.stock = stock;

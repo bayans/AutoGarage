@@ -39,15 +39,6 @@ public class PartService {
                 map(part -> modelMapper.map(part,PartDto.class)).collect(Collectors.toList());
     }
 
-    public PartDto getPartByPartCode(String partCode){
-        Optional<Part> partOptional = repository.findById(partCode);
-        if (!partOptional.isPresent()) {
-            throw new RecordNotFoundException("part not found");
-        } else {
-            Part part = partOptional.get();
-            return modelMapper.map(part, PartDto.class);
-        }
-    }
 
     public void addStockToPart(PartDto partDto, String partCode) {
         Optional<Part> partOptional = repository.findById(partCode);
@@ -61,7 +52,10 @@ public class PartService {
             throw new RecordNotFoundException("part with partCode " + partCode + " not found");
         }
     }
-
+    public boolean deletePartById(String partCode) {
+            repository.deleteById(partCode);
+            return true;
+    }
 
 
 }

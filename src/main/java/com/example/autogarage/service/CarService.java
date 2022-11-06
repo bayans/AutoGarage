@@ -90,4 +90,22 @@ public class CarService {
         }
     }
 
+    public void calculateTotalReceiptByCarId(Long id) {
+        Optional<Car> partOptional = repository.findById(id);
+        if (!partOptional.isPresent()) {
+            throw new RecordNotFoundException("car not found");
+        } else {
+            Car car = partOptional.get();
+            System.out.println("im the not approved 45");
+            if (!car.getRepair().getIsApproved()) {
+                car.getRepair().getReceipt().setTotal(45.0);
+            } else {
+                car.getRepair().getProcedures().
+                        forEach(procedure -> procedure.getParts().
+                                forEach(part -> car.getRepair().getReceipt().setTotal(+part.getPrice())));
+            }
+            repository.save(car);
+        }
+    }
+
 }

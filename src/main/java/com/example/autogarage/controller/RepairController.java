@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -26,11 +27,13 @@ public class RepairController {
     }
 
     @GetMapping(value = "")
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MECHANIC"})
     public ResponseEntity<List<RepairDto>> getAllRepairs() {
         return ResponseEntity.ok(repairService.getAllRepairs());
     }
 
     @PostMapping()
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MECHANIC"})
     public ResponseEntity<Object> createRepair(@Valid @RequestBody RepairDto repairDto, BindingResult br) {
         StringBuilder sb = new StringBuilder();
         if (br.hasErrors()) {
@@ -46,6 +49,7 @@ public class RepairController {
         }
     }
     @PutMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MECHANIC"})
     public ResponseEntity<Object> updateRepairById(@Valid @RequestBody RepairDto repairDto, @PathVariable Long id, BindingResult br) {
 
         StringBuilder sb = new StringBuilder();
