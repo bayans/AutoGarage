@@ -31,8 +31,9 @@ class StockControllerTest {
     @Test
     void createStock() throws Exception{
         Stock anObject = new Stock();
+        anObject.setId(1);
         anObject.setPieces(5);
-        //
+
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();

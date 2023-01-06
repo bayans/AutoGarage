@@ -50,8 +50,6 @@ class PartServiceTest {
 
     List<Part> parts = new ArrayList<>();
 
-    List<PartDto> partDtos = new ArrayList<>();
-
     @BeforeEach
     public void setUp() {
 
@@ -81,7 +79,7 @@ class PartServiceTest {
 
         Part newPart = modelMapper.map(partService.createPart(dto), Part.class);
         PartDto newDto = modelMapper.map(newPart, PartDto.class);
-        System.out.println(""+newPart);
+
         assertThat(newDto).isEqualTo(dto);
 
     }

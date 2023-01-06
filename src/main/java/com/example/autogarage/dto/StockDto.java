@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class StockDto {
-    public Long id;
+    public Integer id;
     public int pieces;
 
-    public StockDto(Long id, int pieces) {
+    public StockDto(Integer id, int pieces) {
         this.id = id;
         this.pieces = pieces;
 

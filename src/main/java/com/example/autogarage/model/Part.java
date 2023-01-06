@@ -3,14 +3,13 @@ package com.example.autogarage.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.Accessors;
+
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Accessors(chain = true)
 @Entity
 @Table(name = "parts")
 public class Part {

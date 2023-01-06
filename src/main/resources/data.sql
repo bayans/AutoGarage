@@ -12,3 +12,4 @@ INSERT INTO authorities(username, authority, user_username)
 VALUES('yannick','ROLE_MECHANIC', 'yannick');
 
 
+
