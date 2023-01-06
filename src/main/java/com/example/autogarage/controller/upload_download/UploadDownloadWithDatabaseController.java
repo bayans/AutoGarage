@@ -37,10 +37,10 @@ public class UploadDownloadWithDatabaseController {
     }
 
     //    get for single download
-    @GetMapping("/downloadFromDB/{fileName}")
-    ResponseEntity<byte[]> downLoadSingleFile(@PathVariable String fileName, HttpServletRequest request) {
+    @GetMapping("/downloadFromDB/{id}")
+    ResponseEntity<byte[]> downLoadSingleFile(@PathVariable Long id, HttpServletRequest request) {
 
-        return databaseService.singleFileDownload(fileName, request);
+        return databaseService.singleFileDownload(id, request);
     }
 
 //    post for multiple uploads to database
