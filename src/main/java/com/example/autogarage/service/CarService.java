@@ -2,7 +2,6 @@ package com.example.autogarage.service;
 
 
 import com.example.autogarage.dto.CarDto;
-import com.example.autogarage.dto.RepairDto;
 import com.example.autogarage.exception.RecordNotFoundException;
 import com.example.autogarage.model.Car;
 import com.example.autogarage.model.Mechanic;

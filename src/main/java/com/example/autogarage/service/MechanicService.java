@@ -1,12 +1,9 @@
 package com.example.autogarage.service;
 
-import com.example.autogarage.dto.CarDto;
+
 import com.example.autogarage.dto.MechanicDto;
-import com.example.autogarage.dto.RepairDto;
 import com.example.autogarage.exception.RecordNotFoundException;
-import com.example.autogarage.model.Car;
 import com.example.autogarage.model.Mechanic;
-import com.example.autogarage.model.Repair;
 import com.example.autogarage.repsitory.MechanicRepository;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -14,7 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

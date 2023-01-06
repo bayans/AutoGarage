@@ -6,21 +6,18 @@ import com.example.autogarage.exception.RecordNotFoundException;
 import com.example.autogarage.model.Receipt;
 import com.example.autogarage.model.Repair;
 import com.example.autogarage.repsitory.ReceiptRepository;
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.quality.Strictness;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;

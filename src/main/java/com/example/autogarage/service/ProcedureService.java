@@ -1,10 +1,8 @@
 package com.example.autogarage.service;
 
 
-import com.example.autogarage.dto.CarDto;
-import com.example.autogarage.dto.PartDto;
+
 import com.example.autogarage.dto.ProcedureDto;
-import com.example.autogarage.dto.RepairDto;
 import com.example.autogarage.exception.RecordNotFoundException;
 import com.example.autogarage.model.*;
 import com.example.autogarage.repsitory.ProcedureRepository;

@@ -1,6 +1,5 @@
 package com.example.autogarage.controller;
 
-import com.example.autogarage.dto.CarDto;
 import com.example.autogarage.dto.MechanicDto;
 import com.example.autogarage.service.MechanicService;
 import org.springframework.http.HttpStatus;
