@@ -46,9 +46,9 @@ public class DatabaseService {
 
     }
 
-    public ResponseEntity<byte[]> singleFileDownload(String fileName, HttpServletRequest request){
+    public ResponseEntity<byte[]> singleFileDownload(Long id, HttpServletRequest request){
 
-       FileDocument document = doc.findByFileName(fileName);
+       FileDocument document = doc.findById(id).get();
 
 //        this mediaType decides witch type you accept if you only accept 1 type
 //        MediaType contentType = MediaType.IMAGE_JPEG;
