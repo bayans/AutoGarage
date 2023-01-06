@@ -8,6 +8,7 @@ import com.example.autogarage.model.User;
 import com.example.autogarage.repsitory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ import java.util.Set;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 //    @Autowired
 //    private AuthorityRepository authorityRepository;
@@ -105,7 +109,7 @@ public class UserService {
         var user = new User();
 
         user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEnabled(userDto.getEnabled());
         user.setEmail(userDto.getEmail());
 

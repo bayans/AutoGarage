@@ -1,5 +1,6 @@
 package com.example.autogarage.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -14,11 +15,13 @@ public class Authority implements GrantedAuthority {
 
     @Column(nullable = false)
     private String authority;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_username")
     private User user;
-    public Authority() {}
+
+    public Authority() {
+    }
 
     public Authority(String username, String authority) {
         this.username = username;
@@ -28,12 +31,15 @@ public class Authority implements GrantedAuthority {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getAuthority() {
         return authority;
     }
+
     public void setAuthority(String authority) {
         this.authority = authority;
     }
