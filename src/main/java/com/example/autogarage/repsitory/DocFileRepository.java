@@ -8,4 +8,5 @@ import javax.transaction.Transactional;
 @Transactional
 public interface DocFileRepository extends JpaRepository<FileDocument, Long> {
     FileDocument findByFileName(String fileName);
+
 }
