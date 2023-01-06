@@ -1,10 +1,6 @@
 package com.example.autogarage.controller;
 
-import com.example.autogarage.dto.CarDto;
 import com.example.autogarage.dto.PartDto;
-import com.example.autogarage.dto.RepairDto;
-import com.example.autogarage.dto.StockDto;
-import com.example.autogarage.model.Repair;
 import com.example.autogarage.service.PartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
