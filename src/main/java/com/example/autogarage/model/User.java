@@ -8,6 +8,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 
+
     @Id
     @Column(nullable = false, unique = true)
     private String username;
@@ -21,6 +22,7 @@ public class User {
     @Column
     private String email;
 
+
     @OneToMany(
             targetEntity = Authority.class,
             mappedBy = "username",
@@ -28,6 +30,17 @@ public class User {
             orphanRemoval = true,
             fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
+
+    public User(String username, String password, boolean enabled, String email, Set<Authority> authorities) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.email = email;
+        this.authorities = authorities;
+    }
+
+    public User() {
+    }
 
     public String getUsername() { return username; }
     public void setUsername(String username) {
