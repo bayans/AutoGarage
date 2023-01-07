@@ -24,8 +24,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    private AuthorityRepository authorityRepository;
+
 
     public List<UserDto> getUsers() {
         List<UserDto> users = new ArrayList<>();
