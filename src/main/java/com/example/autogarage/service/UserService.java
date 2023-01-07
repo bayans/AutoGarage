@@ -28,12 +28,12 @@ public class UserService {
 //    private AuthorityRepository authorityRepository;
 
     public List<UserDto> getUsers() {
-        List<UserDto> collection = new ArrayList<>();
+        List<UserDto> users = new ArrayList<>();
         List<User> list = userRepository.findAll();
         for (User user : list) {
-            collection.add(fromUser(user));
+            users.add(fromUser(user));
         }
-        return collection;
+        return users;
     }
 
     public UserDto getUser(String username) {
