@@ -37,7 +37,7 @@ public class UploadDownloadWithDatabaseController {
     }
 
     //    get for single download
-    @GetMapping("/downloadFromDB/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<byte[]> downLoadSingleFile(@PathVariable Long id, HttpServletRequest request) {
 
         return databaseService.singleFileDownload(id, request);
