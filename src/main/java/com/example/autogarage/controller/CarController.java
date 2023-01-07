@@ -73,7 +73,7 @@ public class CarController {
         }
     }
 
-    @PutMapping(value = "/assignRepair/{id}")
+    @PutMapping(value = "/repair/{id}")
     @RolesAllowed({"ROLE_ADMIN","ROLE_MECHANIC"})
     public ResponseEntity<Object> updateRepairForCarByCarId(@Valid @RequestBody CarDto carDto, @PathVariable Long id, BindingResult br) {
         StringBuilder sb = new StringBuilder();
