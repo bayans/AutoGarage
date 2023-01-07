@@ -45,14 +45,11 @@ public class UploadDownloadWithFileSystemController {
     }
 
 //    get for single download
-    @GetMapping("/download/{fileName}")
+    @GetMapping("/{fileName}")
     ResponseEntity<Resource> downLoadSingleFile(@PathVariable String fileName, HttpServletRequest request) {
 
         Resource resource = fileStorageService.downLoadFile(fileName);
 
-//        this mediaType decides witch type you accept if you only accept 1 type
-//        MediaType contentType = MediaType.IMAGE_JPEG;
-//        this is going to accept multiple types
         String mimeType;
 
         try{
@@ -61,14 +58,11 @@ public class UploadDownloadWithFileSystemController {
             mimeType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
         }
 
-//        for download attachment use next line
-//        return ResponseEntity.ok().contentType(contentType).header(HttpHeaders.CONTENT_DISPOSITION, "attachment;fileName=" + resource.getFilename()).body(resource);
-//        for showing image in browser
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(mimeType)).header(HttpHeaders.CONTENT_DISPOSITION, "inline;fileName=" + resource.getFilename()).body(resource);
     }
 
     //    get all names in directory
-    @GetMapping("/download/allNames")
+    @GetMapping("/allNames")
     List<String> downLoadMultipleFile() {
 
         return fileStorageService.downLoad();
